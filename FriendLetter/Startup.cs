@@ -8,6 +8,15 @@ namespace FriendLetter
 {
   public class Startup
   {
+    public Startup(IWebHostEnvireonment env)
+    {
+      var builder = new ConfigurationBuilder()
+        .SetBasePath(env.ContentRootPath)
+        .AddEnvironmentVariables();
+      Configuration = builder.Build();
+    }
 
+    public IConfigurationRoot Configuration {get;}
+    
   }
 }
